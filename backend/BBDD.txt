@@ -1,0 +1,5 @@
+Para arrancar servidor mysql:
+
+net start mysql80
+
+Dsp desde MySql Workbench iniciar BBDD

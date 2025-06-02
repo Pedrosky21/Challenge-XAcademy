@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-2 mb-5" *ngFor="let player of players">
+        <app-player-card class="playerCard" [player]="player"></app-player-card>
+      </div>
+    </div>
+  </div>
+</div>

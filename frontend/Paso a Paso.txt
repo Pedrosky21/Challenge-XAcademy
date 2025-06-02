@@ -1,0 +1,73 @@
+ng new FifaApp --standalone false
+
+ng generate module core
+ng generate module shared
+
+ng generate module features/Home --routing
+ng generate component features/Home...
+.../pages/homePage
+
+ng generate module features/players --routing
+ng generate component features/players...
+.../pages/playersPage
+
+Dejamos solo <router-outlet/> en 
+app.component.html
+
+Importar CoreModule en
+app.module.ts
+
+Poner rutas en
+app-routing.module.ts
+
+Poner rutas en
+home-routing.module.ts &&
+players-routing.module.ts
+
+ng generate service core/services/players...
+/players-api
+
+ng generate component shared/components/navbar
+
+Exportar componente NavbarComponent en
+shared.module
+
+Importar SharedModule en
+home.module.ts &&
+players.module.ts
+
+npm install bootstrap
+
+Poner styles y scripts de bootstrap en
+angular.json
+
+Importar RouterModule en shared.module
+
+Hacer navbar
+
+Poner <app-navbar> en
+home-page.component.html &&
+players-page.component.html
+
+Importar HttpClient && Observable en
+players-api.service.ts
+- Hacer servicio de consulta API
+
+En app.module.ts
+importar &&
+agregar en providers: 
+provideHttpClient(withFetch())
+
+En players-page.component.ts
+importar PlayersApiService
+guardar jugadores usando el servicio
+
+...
+
+ng generate component features/players/...
+components/player-card
+
+En player-card-component-ts
+importar Input
+
+npm i chart.js ng2-charts

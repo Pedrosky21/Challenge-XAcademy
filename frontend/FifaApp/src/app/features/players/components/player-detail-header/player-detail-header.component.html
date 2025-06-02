@@ -1,0 +1,39 @@
+<div
+  class="d-flex align-items-center justify-content-around align-items-center mx-5 mt-5"
+>
+  <div class="card">
+    <div class="card-body">
+      <div class="d-flex align-items-center mx-5">
+        <img [src]="player.player_face_url" alt="image_player" />
+        <div class="ms-5">
+          <p>{{ player.club_name }} | {{ player.player_positions }}</p>
+          <h2>{{ player.long_name }}</h2>
+        </div>
+      </div>
+      <table class="table table-striped table-hover mt-3">
+        <thead>
+          <tr>
+            <th>Age</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Nationality</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ player.age }}</td>
+            <td>{{ player.height_cm }} cm</td>
+            <td>{{ player.weight_kg }} kg</td>
+            <td>{{ player.nationality_name }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="card-text">
+        <p>{{ player.player_traits }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="me-5">
+    <p>Grafico</p>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="card h-100" (click)="onClick()">
+    <img [src]="player.player_face_url" class="card-img-top" alt="image_player" />
+    <div class="card-body">
+        <div class="card-title">
+            <h5>{{ player.long_name }}</h5>
+            <p class="card-text">Posiciones: {{ player.player_positions }}</p>
+            <p class="card-text">Club: {{ player.club_name }}</p>
+        </div>
+    </div>
+    <div class="card-footer">
+        Editar
+    </div>
+</div>
