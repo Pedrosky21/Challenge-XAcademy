@@ -71,3 +71,7 @@ En player-card-component-ts
 importar Input
 
 npm i chart.js ng2-charts
+
+
+-- Para formularios reactivos
+ng add @angular/material

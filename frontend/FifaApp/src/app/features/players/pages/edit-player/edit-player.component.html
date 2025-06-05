@@ -1,0 +1,119 @@
+<app-navbar></app-navbar>
+
+<div class="d-flex mt-5 ms-3">
+  <div class="bg-dark rounded-3 p-3">
+    <form [formGroup]="form">
+      <div class="d-flex gap-3 mb-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Name:</mat-label>
+          <input matInput formControlName="long_name" />
+          <mat-error *ngIf="long_name_Ctrl.touched && long_name_Ctrl.invalid">
+            Name must be longer than 2 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Club:</mat-label>
+          <input matInput formControlName="club_name" />
+          <mat-error *ngIf="club_name_Ctrl.touched && club_name_Ctrl.invalid">
+            Club must be longer than 2 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Nationality:</mat-label>
+          <input matInput formControlName="nationality_name" />
+          <mat-error
+            *ngIf="
+              nationality_name_Ctrl.touched && nationality_name_Ctrl.invalid
+            "
+          >
+            Nationality must be longer than 2 characters
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Player Positions:</mat-label>
+          <input matInput formControlName="player_positions" />
+          <mat-error
+            *ngIf="
+              player_positions_Ctrl.touched && player_positions_Ctrl.invalid
+            "
+          >
+            Position must be longer than 1 character
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="d-flex gap-3 mb-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Passing:</mat-label>
+          <input matInput type="number" formControlName="passing" />
+          <mat-error *ngIf="passing_Ctrl.touched && passing_Ctrl.invalid">
+            Value must be a number between 0 and 100
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Defending:</mat-label>
+          <input matInput type="number" formControlName="defending" />
+          <mat-error *ngIf="defending_Ctrl.touched && defending_Ctrl.invalid">
+            Value must be a number between 0 and 100
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Dribbling:</mat-label>
+          <input matInput type="number" formControlName="dribbling" />
+          <mat-error *ngIf="dribbling_Ctrl.touched && dribbling_Ctrl.invalid">
+            Value must be a number between 0 and 100
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Physic:</mat-label>
+          <input matInput type="number" formControlName="physic" />
+          <mat-error *ngIf="physic_Ctrl.touched && physic_Ctrl.invalid">
+            Value must be a number between 0 and 100
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="d-flex gap-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Pace:</mat-label>
+          <input matInput type="number" formControlName="pace" />
+          <mat-error *ngIf="pace_Ctrl.touched && pace_Ctrl.invalid">
+            Value must be a number between 0 and 100
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Shooting:</mat-label>
+          <input matInput type="number" formControlName="shooting" />
+          <mat-error *ngIf="shooting_Ctrl.touched && shooting_Ctrl.invalid">
+            Value must be a number between 0 and 100
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Overall:</mat-label>
+          <input matInput type="number" formControlName="overall" />
+          <mat-error *ngIf="overall_Ctrl.touched && overall_Ctrl.invalid">
+            Value must be a number between 0 and 100
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="d-flex justify-content-end me-5">
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+          Edit
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div>
+    <p>Hello</p>
+  </div>
+</div>

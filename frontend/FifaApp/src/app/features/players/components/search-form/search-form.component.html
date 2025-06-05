@@ -1,0 +1,39 @@
+<div class="m-3 p-3 bg-light border rounded-4">
+  <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+    <!-- Fila 1 -->
+    <div class="d-flex mb-3 justify-content-around align-items-center">
+      <div class="col-md-5 d-flex align-items-center mb-2 me-3">
+        <label for="long_name" class="col-md-4 form-label">Name:</label>
+        <input type="text" class="form-control" id="long_name" name="long_name" [(ngModel)]="formData.long_name" />
+      </div>
+      <div class="col-md-5 d-flex align-items-center mb-2">
+        <label for="nationality_name" class="col-md-4 form-label"
+          >Nationality:</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="nationality_name"
+          name="nationality_name"
+          [(ngModel)]="formData.nationality_name"
+        />
+      </div>
+    </div>
+
+    <!-- Fila 2 -->
+    <div class="d-flex mb-3 justify-content-around align-items-center">
+      <div class="col-md-5 d-flex align-items-center mb-2 me-3">
+        <label for="club_name" class="col-md-4 form-label">Club:</label>
+        <input type="text" class="form-control" id="club_name" name="club_name" [(ngModel)]="formData.club_name" />
+      </div>
+      <div class="col-md-5 d-flex align-items-center mb-2">
+        <label for="player_positions" class="col-md-4 form-label">Position:</label>
+        <input type="text" class="form-control" id="player_positions" name="player_positions" [(ngModel)]="formData.player_positions" />
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary">Filter</button>
+    </div>
+  </form>
+</div>

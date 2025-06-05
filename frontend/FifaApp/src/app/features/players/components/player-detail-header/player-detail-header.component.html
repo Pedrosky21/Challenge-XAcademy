@@ -34,6 +34,17 @@
     </div>
   </div>
   <div class="me-5">
-    <p>Grafico</p>
+    <div
+      class="chart-container"
+      style="display: block; max-width: 500px; margin: auto"
+    >
+      <canvas
+        baseChart
+        [data]="chartData"
+        [type]="chartType"
+        [options]="chartOptions"
+      >
+      </canvas>
+    </div>
   </div>
 </div>

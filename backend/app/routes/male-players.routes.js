@@ -6,5 +6,9 @@ const router = express.Router();
 router.get('/', malePlayersController.findAll);
 // Obtener un jugador masculino por ID
 router.get('/:id', malePlayersController.findByPk);
+// Crear un nuevo jugador masculino
+router.post('/', malePlayersController.create);
+// Actualizar un jugador masculino por ID
+router.put('/:id', malePlayersController.update);
 
 module.exports = router;

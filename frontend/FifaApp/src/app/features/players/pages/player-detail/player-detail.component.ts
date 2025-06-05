@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataTransferService } from '../../../../core/services/data-player/data-transfer.service';
+import { PlayersApiService } from '../../../../core/services/players/players-api.service';
 
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-player-detail',
@@ -11,18 +11,30 @@ import { Router } from '@angular/router';
 })
 export class PlayerDetailComponent implements OnInit {
   player: any;
+  id: string = "";
 
   constructor(
     private router: Router,
-    private dataService: DataTransferService
+    private playersApi: PlayersApiService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.player = this.dataService.getData();
+    this.id = this.route.snapshot.paramMap.get('id') ?? '';
 
-    if (!this.player) {
-      this.router.navigate(['/players']);
-    }
+    this.playersApi.getPlayer(this.id).subscribe({
+      next: (data) => {
+        if (data) {
+          this.player = data;
+        } else {
+          this.router.navigate(['/players']);
+        }
+      },
+      error: (err) => {
+        console.error('Error obteniendo jugador:', err);
+        this.router.navigate(['/players']);
+      }
+    });
   }
   
 }

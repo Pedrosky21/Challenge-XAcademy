@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import { DataTransferService } from '../../../../core/services/data-player/data-transfer.service';
-
 import { Input } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -14,13 +12,10 @@ export class PlayerCardComponent {
   @Input() player: any;
 
   constructor(
-    private router: Router,
-    private dataTransferService: DataTransferService
+    private router: Router
   ) {}
 
   onClick() {
-    this.dataTransferService.setData(this.player);
-    console.log(this.player);
-    this.router.navigate(['/players/detail']);
+    this.router.navigate(['/players/detail/' + this.player.id]);
   }
 }
