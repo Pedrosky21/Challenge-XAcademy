@@ -133,7 +133,7 @@ export class EditPlayerComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.sendPlayerData(this.form.value);
+      this.sendPlayerData(this.form.getRawValue());
     }
   }
 

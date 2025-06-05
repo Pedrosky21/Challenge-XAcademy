@@ -1,0 +1,9 @@
+agregar toast (bootstrap) que avise que se actualizo/creo el jugador correctamente
+
+acordeon (bootstrap) para el filtrado
+
+-- Primeras 2 en 5min
+
+login
+
+descargar csv del listado (con filtrado si hay)

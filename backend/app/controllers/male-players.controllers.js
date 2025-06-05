@@ -150,8 +150,11 @@ exports.findByPk = async (req, res) => {
 exports.create = async (req, res) => {
   try {
     const {
-      name,
-      nationality,
+      long_name,
+      nationality_name,
+      club_name,
+      player_positions,
+      pace,
       shooting,
       passing,
       dribbling,
@@ -160,15 +163,16 @@ exports.create = async (req, res) => {
       overall,
     } = req.body;
 
-    if (!name) {
+    if (!long_name) {
       return res.status(400).send({
         message: "El nombre del jugador es obligatorio.",
       });
-    } else if (!nationality) {
+    } else if (!nationality_name) {
       return res.status(400).send({
         message: "La nacionalidad del jugador es obligatoria.",
       });
     } else if (
+      pace == null ||
       shooting == null ||
       passing == null ||
       dribbling == null ||
@@ -184,11 +188,11 @@ exports.create = async (req, res) => {
     const newPlayer = {
       fifa_version: "15",
       fifa_update: "2",
-      player_face_url: "https://cdn.sofifa.net/players/158/023/15_120.png",
-      long_name: name,
-      player_positions: "ST",
-      club_name: "FC Barcelona",
-      nationality_name: nationality,
+      player_face_url: "",
+      long_name: long_name,
+      player_positions: player_positions,
+      club_name: club_name,
+      nationality_name: nationality_name,
       overall: overall,
       potential: 95,
       value_eur: 100500000,
@@ -202,7 +206,7 @@ exports.create = async (req, res) => {
       international_reputation: 5,
       work_rate: "Medium/Low",
       body_type: "Normal (170-)",
-      pace: 93,
+      pace: pace,
       shooting: shooting,
       passing: passing,
       dribbling: dribbling,
@@ -257,32 +261,43 @@ exports.create = async (req, res) => {
   }
 };
 
-
 // Actualizar un jugador
 exports.update = async (req, res) => {
   try {
     const id = req.params.id; // << ID desde la ruta
 
+    const player = await MalePlayers.findByPk(Number(id));
+    if (!player) {
+      // No existe el jugador
+      return res
+        .status(404)
+        .send({ message: `Jugador con ID ${id} no encontrado.` });
+    }
+
     const {
-      name,
-      nationality,
+      long_name,
+      nationality_name,
+      player_positions,
+      club_name,
+      pace,
       shooting,
       passing,
       dribbling,
       defending,
       physic,
-      overall
+      overall,
     } = req.body;
 
-    if (!name) {
+    if (!long_name) {
       return res.status(400).send({
         message: "El nombre del jugador es obligatorio.",
       });
-    } else if (!nationality) {
+    } else if (!nationality_name) {
       return res.status(400).send({
         message: "La nacionalidad del jugador es obligatoria.",
       });
     } else if (
+      pace == null ||
       shooting == null ||
       passing == null ||
       dribbling == null ||
@@ -297,14 +312,17 @@ exports.update = async (req, res) => {
 
     const [rowsUpdated] = await MalePlayers.update(
       {
-        long_name: name,
-        nationality_name: nationality,
+        long_name: long_name,
+        nationality_name: nationality_name,
+        player_positions: player_positions,
+        club_name: club_name,
+        pace,
         shooting,
         passing,
         dribbling,
         defending,
         physic,
-        overall
+        overall,
       },
       { where: { id: id } }
     );
@@ -314,10 +332,12 @@ exports.update = async (req, res) => {
         message: "Jugador actualizado correctamente.",
       });
     } else {
-      res.status(404).send({
-        message: `Jugador con ID ${id} no encontrado.`,
+      res.status(200).send({
+        message:
+          "No se realizaron cambios porque los datos enviados son iguales a los actuales.",
       });
     }
+
   } catch (error) {
     res.status(500).send({
       message: error.message || "Ocurrió un error al actualizar el jugador.",
