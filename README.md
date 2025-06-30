@@ -25,7 +25,6 @@ npm install
 node app.js
 ```
 
-Esto iniciará el servidor backend.
 
 ### 3. Frontend (Angular)
 
@@ -36,6 +35,25 @@ npm install
 ng serve
 ```
 
+
+## Rutas del Backend
+
+### Autenticación (`/api/auth`)
+
+* `POST /api/auth/register` — Registrar un nuevo usuario
+* `POST /api/auth/login` — Iniciar sesión
+
+### Jugadoras (`/api/femalePlayers`)
+
+* `GET /api/femalePlayers/` — Obtener todas las jugadoras
+
+### Jugadores (`/api/malePlayers`)
+
+* `GET /api/malePlayers/` — Obtener todos los jugadores masculinos
+* `GET /api/malePlayers/export` — Exportar los jugadores masculinos a un archivo CSV
+* `GET /api/malePlayers/:id` — Obtener un jugador masculino por ID
+* `POST /api/malePlayers/` — Crear un nuevo jugador masculino
+* `PUT /api/malePlayers/:id` — Actualizar un jugador masculino por ID
 
 ## Consideraciones
 
