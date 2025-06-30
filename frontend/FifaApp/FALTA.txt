@@ -6,4 +6,3 @@ acordeon (bootstrap) para el filtrado
 
 login
 
-descargar csv del listado (con filtrado si hay)

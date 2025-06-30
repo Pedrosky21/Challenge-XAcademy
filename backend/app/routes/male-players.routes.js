@@ -4,6 +4,8 @@ const router = express.Router();
 
 // Obtener todos los jugadores masculinos
 router.get('/', malePlayersController.findAll);
+// Obtener csv de los jugadores masculinos
+router.get('/export', malePlayersController.exportPlayers)
 // Obtener un jugador masculino por ID
 router.get('/:id', malePlayersController.findByPk);
 // Crear un nuevo jugador masculino

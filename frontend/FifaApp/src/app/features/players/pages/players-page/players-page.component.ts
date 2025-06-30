@@ -12,10 +12,14 @@ import { Router } from '@angular/router';
 export class PlayersPageComponent {
   players: any[] = [];
   errorMessage: string = '';
+  cargando = false;
+  currentPage = 1;
+  totalPages = 1;
+  limit = 24
 
   params = {
-    page: 1,
-    limit: 24,
+    page: this.currentPage,
+    limit: this.limit,
     long_name: '',
     player_positions: '',
     club_name: '',
@@ -32,6 +36,7 @@ export class PlayersPageComponent {
   }
 
   loadPlayers() {
+    this.params.page = this.currentPage;
     this.errorMessage = '';
     this.playersApiService.getPlayers(this.params).subscribe({
       next: (response) => {
@@ -49,6 +54,11 @@ export class PlayersPageComponent {
     });
   }
 
+  changePage(page: number) {
+    this.currentPage = page;
+    this.loadPlayers()
+  }
+
   onSearchSubmit(formData: any) {
     this.params.long_name = formData.long_name || '';
     this.params.player_positions = formData.player_positions || '';
@@ -58,4 +68,25 @@ export class PlayersPageComponent {
     this.loadPlayers();
     console.log('Form submitted with data:', formData);
   }
+
+  downloadCSV() {
+    this.cargando = true;
+    this.playersApiService.downloadPlayers(this.params).subscribe({
+      next: (response) => {
+        const url = window.URL.createObjectURL(response);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'players.xlsx';  // nombre del archivo
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+        this.cargando = false;
+      },
+      error: (error) => {
+        console.error('Error al exportar:', error);
+        this.cargando = false;
+        alert('Error al generar el archivo.');
+      }
+    })
+  };
 }

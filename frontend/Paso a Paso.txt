@@ -75,3 +75,11 @@ npm i chart.js ng2-charts
 
 -- Para formularios reactivos
 ng add @angular/material
+
+
+-- Para autenticacion
+ng generate module features/auth --routing
+ng generate component features/auth...
+/pages/login
+ng generate component features/auth...
+/pages/register

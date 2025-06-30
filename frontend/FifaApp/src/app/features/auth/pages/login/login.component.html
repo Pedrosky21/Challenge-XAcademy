@@ -1,0 +1,51 @@
+<div
+  class="container d-flex justify-content-center align-items-center min-vh-100"
+>
+  <div class="card bg-dark text-white shadow p-4">
+    <h3 class="text-center mb-4">Login</h3>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>
+            Username
+          </mat-label>
+          <input
+            matInput
+            formControlName="username"
+            placeholder="User123"
+          />
+          <mat-error *ngIf="username_Ctrl.touched && username_Ctrl.invalid">
+            Username required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mb-3">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label for="password">Password</mat-label>
+          <input
+            matInput
+            type="password"
+            id="password"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <mat-error *ngIf="password_Crtl.touched && password_Crtl.invalid">
+            Password required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <p class="text-danger" *ngIf="errorMessage!==''">{{errorMessage}}</p>
+
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+
+    <div class="text-center mt-3">
+      <small
+        >Don't have an account?
+        <a routerLink="/auth/register">Register here</a>
+      </small>
+    </div>
+  </div>
+</div>

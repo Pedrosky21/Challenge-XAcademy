@@ -2,8 +2,11 @@
 
 <app-search-form (searchSubmit)="onSearchSubmit($event)"></app-search-form>
 
-<div class="d-flex justify-content-end mt-3 me-3" routerLink="/players/edit-player/0">
-  <button class="btn btn-primary px-3"><i class="bi bi-plus-circle"></i></button>
+<div class="d-flex justify-content-between mt-3 mx-3">
+  <button class="btn btn-success px-3" (click)="downloadCSV()">Download CSV<i class="bi bi-download ms-2"></i></button>
+  <button class="btn btn-primary px-3 d-flex align-items-center" routerLink="/players/edit-player/0">
+    Create<i class="bi bi-plus-circle ms-2"></i>
+  </button>
 </div>
 
 <div class="container">
@@ -18,3 +21,12 @@
     {{ errorMessage }}
   </div>
 </div>
+
+<nav aria-label="Page navigation" class="d-flex justify-content-center pb-4">
+  <ul class="pagination">
+    <li class="page-item"><button class="page-link" [disabled]="currentPage === 1" (click)="changePage(this.currentPage - 1)">Previous</button></li>
+    <li class="page-item"><a class="page-link active">{{currentPage}}</a></li>
+    <li class="page-item"><button class="page-link" (click)="changePage(this.currentPage + 1)">Next</button></li>
+  </ul>
+</nav>
+

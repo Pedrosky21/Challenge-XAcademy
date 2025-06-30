@@ -26,4 +26,8 @@ export class PlayersApiService {
   getPlayers(params: any): Observable<any> {
     return this.http.get(this.apiUrl, {params});
   }
+
+  downloadPlayers(params:any): Observable<any> {
+    return this.http.get(`${this.apiUrl}/export`, {params, responseType: 'blob'})
+  }
 }

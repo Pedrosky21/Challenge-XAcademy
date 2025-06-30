@@ -11,6 +11,11 @@ const routes: Routes = [
     path:'players',
     loadChildren: () => import('./features/players/players.module').
     then(m=>m.PlayersModule)
+  },
+  {
+    path:'auth',
+    loadChildren: () => import('./features/auth/auth.module').
+    then(m=>m.AuthModule)
   }
 ];
 
